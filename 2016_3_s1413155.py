@@ -30,3 +30,4 @@ lokas = Lokomotyvas(0,0)
 
 lokas = Lokomotyvas1 + Lokomotyvas2
 print(lokas)
+print("git test")
