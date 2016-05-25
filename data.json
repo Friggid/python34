@@ -1,1 +1,1 @@
-{"vagonas": [{"nr": 1, "mase": 20, "maxMase": 40, "krovinioMase": 10}], "lokomotyvas": [{"maxMase": 3, "mase": 2}, {"maxMase": 1, "mase": 1}]}
+{"vagonas": [{"nr": 3, "mase": 14, "maxMase": 42, "krovinioMase": 23},{"nr": 2, "mase": 12, "maxMase": 56, "krovinioMase": 32},{"nr": 1, "mase": 20, "maxMase": 40, "krovinioMase": 10}], "lokomotyvas": [{"maxMase": 20, "mase": 8}, {"maxMase": 10, "mase": 5},{"maxMase": 20, "mase": 5}]}

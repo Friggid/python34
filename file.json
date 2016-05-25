@@ -1,8 +1,0 @@
-{
-"lokomotyvas":[
-    {"mase":20, "maxMase":40},
-    {"mase":30, "maxMase":40}
-],
-"vagonas":[
-    {"mase":20,"vezMase":10, "maxMase":40,"nr":1}
-]}
