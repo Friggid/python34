@@ -1,7 +1,7 @@
 class Lokomotyvas:
     def __init__(self,mase,maxMase):
-        self._mase = mase
-        self._maxMase = maxMase
+        self.mase = mase
+        self.maxMase = maxMase
 
     @property
     def mase(self):
@@ -11,11 +11,25 @@ class Lokomotyvas:
         return self._maxMase
 
     @mase.setter
-    def mase(self,value):
-        self._mase = value
+    def mase(self,v):
+        if (v > 0)and(type(v)==int): 
+            self._mase = v
+        else:
+            self._mase = 1
+            print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            print("Mase turi buti skaicius ir daugiau uz 0!")
+            print("Nustatyta default reiksme 1!")                        
+            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")            
     @maxMase.setter
-    def maxMase(self,value):
-        self._maxMase = value
+    def maxMase(self,v):
+        if (v > 0)and(type(v)==int): 
+            self._maxMase = v
+        else:
+            self._maxMase = 2
+            print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            print("Mase turi buti skaicius ir daugiau uz 0!")
+            print("Nustatyta default reiksme 2!")            
+            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n") 
     
     def __add__(self,other):
         return(self._mase+other._mase,self._maxMase+other._maxMase)
@@ -31,10 +45,10 @@ class Lokomotyvas:
 
 class Vagonas:
     def __init__(self,mase,maxMase,krovinioMase,nr):
-        self._mase = mase
-        self._maxMase = maxMase
-        self._krovinioMase = krovinioMase
-        self._nr = nr
+        self.mase = mase
+        self.maxMase = maxMase
+        self.krovinioMase = krovinioMase
+        self.nr = nr
     
     @property
     def mase(self):
@@ -50,26 +64,26 @@ class Vagonas:
         return self._nr
     
     @mase.setter
-    def mase(self,value):
-        self._mase = value
+    def mase(self,v):
+        self._mase = v
     @maxMase.setter
-    def maxMase(self,value):
-        self._maxMase = value
+    def maxMase(self,v):
+        self._maxMase = v
     @krovinioMase.setter
-    def krovinioMase(self,value):
-        self._krovinioMase = value
+    def krovinioMase(self,v):
+        self._krovinioMase = v
     @nr.setter
-    def nr(self,value):
-        self._nr = value
+    def nr(self,v):
+        self._nr = v
         
     def __add__(self,other):
-        return(self.mase+other.mase,self.maxMase+other.maxMase)
+        return(self._mase+other._mase,self._maxMase+other._maxMase)
 
     def __repr__(self):
-        return "(Mase: %d, Max mase: %d, Krovinio mase: %d, Nr: %d)" %(self.mase,self.maxMase,self.krovinioMase,self.nr)    
+        return "(Mase: %d, Max mase: %d, Krovinio mase: %d, Nr: %d)" %(self._mase,self._maxMase,self._krovinioMase,self._nr)    
 
     def __str__(self):
-        return "Mase: %i, Max mase: %i, Krovinio mase: %i, Nr: %i" %(self.mase,self.maxMase,self.krovinioMase,self.nr)
+        return "Mase: %i, Max mase: %i, Krovinio mase: %i, Nr: %i" %(self._mase,self._maxMase,self._krovinioMase,self._nr)
 
 class Traukinys:
     def __init__(self,lok,vag,nr):
@@ -81,18 +95,18 @@ class Traukinys:
     def __str__(self):
         return "Lokomotyvo mase: %s,Vagono mase: %s, Traukinio nr.: %s" %(self.lok,self.vag,self.nr)
     def __add__(self,other):
-        lok_mase = self.lok.mase+other.lok.mase
-        vag_mase = self.vag.mase+other.vag.mase
+        lok_mase = self.lok._mase+other.lok._mase
+        vag_mase = self.vag._mase+other.vag._mase
         mase = lok_mase + vag_mase
         
         return mase
         #return Traukinys(self.lok.mase+other.lok.mase,self.vag.mase+other.vag.mase)
     def __sub__(self,other):
-        maxMaseVagono = self.vag.maxMase+other.vag.maxMase
-        maxMaseLokoloko = self.lok.maxMase+other.lok.maxMase
+        maxMaseVagono = self.vag._maxMase+other.vag._maxMase
+        maxMaseLokoloko = self.lok._maxMase+other.lok._maxMase
         maxMase = maxMaseVagono + maxMaseLokoloko
         
-        krovinioMase = self.vag.krovinioMase + other.vag.krovinioMase 
+        krovinioMase = self.vag._krovinioMase + other.vag._krovinioMase 
         
         uzimtaMase = maxMase - krovinioMase
         

@@ -61,26 +61,7 @@ def sorting():
                     print("Traukinys: ",trauk[j])
     else:
         print("Yveskite skaiciu 1 arba 2.")
-   
-    # Sastatas = Vag+Vag2
-
-    # Traukinys1 = Traukinys(Lokomotyvas2,Vag)
-    # Traukinys2 = Traukinys(Lokomotyvas1,Vag2)
-
-    # TraukMase = Traukinys1+Traukinys2
-    # TraukUzimta = Traukinys1-Traukinys2 
-    # laisva = TraukMase - TraukUzimta
-    #14,6
-    # add(14+6,kroviniomase)
-    #print(TraukMase)
-    #print(TraukUzimta)
-    #print(laisva)
-
-    #{"vagonas": [{"nr": 1, "mase": 20, "maxMase": 40, "krovinioMase": 10}], "lokomotyvas": [{"maxMase": 3, "mase": 2}, {"maxMase": 1, "mase": 1}]}
-
-    # lok.mase+vag.mase+vag.krovinioMase = Traukinio mase
-    # vag.maxMase+lok.maxMase = Max traukinio mase
-    # Max traukinio mase - traukinio mase = laisva vieta
+        sorting()
 
 def writeJson():
 #failas = input()
@@ -88,7 +69,8 @@ def writeJson():
     with open("data.json") as data_file:
         data=json.load(data_file)
 
-    tipas = input("1. Lokomotyvas, 2. Vagonas. Parasykite pasirinkima: ")
+    tipas = input("1. Lokomotyvas, 2. Vagonas, 3. B - Gryzti y meniu , Parasykite pasirinkima: ")
+    print("----------------------------------------------------")    
 
     if(tipas=="1"):
         tipas="lokomotyvas"
@@ -101,6 +83,8 @@ def writeJson():
 #/mif/stud3/2014/tami1864/Python/3atsisk/
         with open('data.json', 'w') as outfile:
             json.dump(data,outfile)
+        print("----------------------------------------------------")
+        print("Lokomatyvas sukurtas sekmingai!")
         print(data)
 
     elif(tipas=="2"):
@@ -116,11 +100,17 @@ def writeJson():
 #/mif/stud3/2014/tami1864/Python/3atsisk/
         with open('data.json', 'w') as outfile:
             json.dump(data,outfile)
+        print("----------------------------------------------------")
+        print("Vagonas sukurtas sekmingai!")
         print(data)
-
+    elif(tipas == "b")or(tipas == "B"):
+        menu()
     else:
-        print("Neteisingas pasirinkimas")
-        sys.exit(0)
+        print("!! Neteisingas pasirinkimas, privalo buti skaicius  !!")
+        print("!! Galite pasirinkti 1(Lokomatyvas) arba 2(Vagonas) !!") 
+        print("!! Spauskite B, tam kad grysti y meniu              !!")       
+        print("----------------------------------------------------")        
+        writeJson()
 
 print("----------------------------------------------------")
 print("|               PROGRAMOS NAUDOJIMAS               |")
@@ -156,5 +146,5 @@ def menu():
     else:
         print("Programa sustabdyta.")
         sys.exit(0)
-        
+                
 menu()
