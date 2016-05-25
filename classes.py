@@ -112,7 +112,7 @@ class Vagonas:
 
     def __str__(self):
         return "Mase: %i, Max mase: %i, Krovinio mase: %i, Nr: %i" %(self._mase,self._maxMase,self._krovinioMase,self._nr)
-
+#Add ir Sub surusiuoja traukinius pagal laisva vieta arba visa vagonu ir lokomatyvu mase
 class Traukinys:
     def __init__(self,lok,vag,nr):
         self.lok = lok
@@ -122,13 +122,15 @@ class Traukinys:
         return "(Lok: %s Vag: %s Traukinio Nr.: %s)" % (self.lok,self.vag,self.nr)
     def __str__(self):
         return "Lokomotyvo mase: %s,Vagono mase: %s, Traukinio nr.: %s" %(self.lok,self.vag,self.nr)
+    #1.Rusiuojant pagal mase suskaiciuoja bendra lokomatyvu ir vagonu mase ir isrusiuoja didejimo tvarka
     def __add__(self,other):
         lok_mase = self.lok._mase+other.lok._mase
         vag_mase = self.vag._mase+other.vag._mase
         mase = lok_mase + vag_mase
         
         return mase
-        #return Traukinys(self.lok.mase+other.lok.mase,self.vag.mase+other.vag.mase)
+    #2.Rusiuojant pagal laisva vieta pirmiausia suranda maksimalia vagonu ir lokomatyvu mase
+    #  Tada is maksimalios mases atima vezama kroviniu mase ir randama atlikusi laisva vieta
     def __sub__(self,other):
         maxMaseVagono = self.vag._maxMase+other.vag._maxMase
         maxMaseLokoloko = self.lok._maxMase+other.lok._maxMase

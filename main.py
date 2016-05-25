@@ -3,6 +3,7 @@ import sys
 import classes
 from classes import * 
 
+#Nuskaito json faila y lokomatyvus ir vagonus ir sudaro traukiny.
 def readJson():
     with open(failas) as data_file:
         data=json.load(data_file)
@@ -20,7 +21,7 @@ def readJson():
     trauk.append(Traukinys(lok[1],vag[1],1))
     trauk.append(Traukinys(lok[2],vag[2],2))
     return trauk
-
+#Parodo visus traukinius
 def showTrains():
     trauk = []
     trauk = readJson()
@@ -31,7 +32,7 @@ def showTrains():
         print("Traukinys: ", j+1)
         print(trauk[j])
         print("----------------------------------------------------")
-    
+
 def sorting():      
     trauk = []
     trauk = readJson()
@@ -79,6 +80,7 @@ def tikrintiInputui(sk):
         print('Error code: ' + repr(error) + '\n')
         writeJson()
 
+#Lokomotyvo arba Vagono sukurimas
 def writeJson():
 #failas = input()
              ## '/mif/stud3/2014/tami1864/Python/3atsisk/'+ cia failas turi but
@@ -153,6 +155,7 @@ print("| 3. Pridekite nauja vagona ar lokomotyva          |")
 print("| Q. Iseiti is programos                           |")
 print("----------------------------------------------------")
 
+#Menu tam, kad butu lengviau naviguoti
 def menu():
     
     menuPick = input("Pasirinkimas(1,2,3,Q): ")    
