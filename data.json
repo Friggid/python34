@@ -1,1 +1,1 @@
-{"vagonas": [{"krovinioMase": 10, "maxMase": 40, "mase": 20, "nr": 1}], "lokomotyvas": [{"mase": 2, "maxMase": 3}]}
+{"vagonas": [{"nr": 1, "mase": 20, "maxMase": 40, "krovinioMase": 10}], "lokomotyvas": [{"maxMase": 3, "mase": 2}, {"maxMase": 1, "mase": 1}]}
