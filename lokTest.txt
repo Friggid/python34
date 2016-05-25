@@ -1,0 +1,19 @@
+>>> from classes import *
+>>> lok = []
+>>> lok.append(Lokomotyvas(10,10))
+>>> print(lok[0])
+Mase: 10, Max mase: 10
+>>> l = Lokomotyvas(1,2)
+>>> l2 = Lokomotyvas(2,3)
+>>> print(l2)
+Mase: 2, Max mase: 3
+>>> repr(l2)
+'(Mase: 2, Max mase: 3)'
+>>> l3 = l + l2
+>>> print(l3)
+(3, 5)
+>>> print(l3[0])
+3
+>>> l4 = l2 - l
+>>> l4
+(1, 1)

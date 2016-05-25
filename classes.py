@@ -42,7 +42,7 @@ class Lokomotyvas:
         
     def __str__(self):
         return "Mase: %i, Max mase: %i" %(self._mase,self._maxMase)
-
+    
 class Vagonas:
     def __init__(self,mase,maxMase,krovinioMase,nr):
         self.mase = mase
