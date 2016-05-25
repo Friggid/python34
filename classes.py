@@ -25,13 +25,14 @@ class Vagonas:
         return "Mase: %i, Max mase: %i, Krovinio mase: %i, Nr: %i" %(self.mase,self.maxMase,self.krovinioMase,self.nr)
 
 class Traukinys:
-    def __init__(self,lok,vag):
+    def __init__(self,lok,vag,nr):
         self.lok = lok
         self.vag = vag
+        self.nr = nr
     def __repr__(self):
-        return "(Lok: %s Vag: %s)" % (self.lok,self.vag)
+        return "(Lok: %s Vag: %s Traukinio Nr.: %s)" % (self.lok,self.vag,self.nr)
     def __str__(self):
-        return "Lokomotyvo mase: %d,Vagono mase: %d" %(self.lok,self.vag)
+        return "Lokomotyvo mase: %s,Vagono mase: %s, Traukinio nr.: %s" %(self.lok,self.vag,self.nr)
     def __add__(self,other):
         lok_mase = self.lok.mase+other.lok.mase
         vag_mase = self.vag.mase+other.vag.mase

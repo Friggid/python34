@@ -17,49 +17,46 @@ def readJson():
     for i in range(len(data["vagonas"])):
         vag.append(Vagonas(data['vagonas'][i]['nr'],data['vagonas'][i]['mase'],data['vagonas'][i]['maxMase'],data['vagonas'][i]['krovinioMase']))
     
-    # print(lok[0])
-    # print(vag[0])
-    trauk.append(Traukinys(lok[0],vag[0]))
-    trauk.append(Traukinys(lok[1],vag[1]))
-    trauk.append(Traukinys(lok[2],vag[2]))
+    trauk.append(Traukinys(lok[0],vag[0],0))
+    trauk.append(Traukinys(lok[1],vag[1],1))
+    trauk.append(Traukinys(lok[2],vag[2],2))
+    print("Traukas: ", trauk)
     return trauk
     
 def sorting():      
     trauk = []
     trauk = readJson()
-    print(trauk)
     
-    Mase = []
-    Mase.append((trauk[0]+trauk[1]))
-    Laisva = []
-    Laisva.append((trauk[0]+trauk[1]) - (trauk[0]-trauk[1]))
-    Laisva.append((trauk[1]+trauk[2]) - (trauk[1]-trauk[2]))
-    Laisva.append((trauk[2]+trauk[0]) - (trauk[2]-trauk[0]))
-    
-    Laisva = sorted(Laisva,reverse=False)
-    
-    print(Laisva)
-    print(Mase)
-    # Lok1 = Lokomotyvas(1,10)
-    # Lok2 = Lokomotyvas(13,20)
-    # Lok3 = Lokomotyvas(2,5)
-    # Lok4 = Lokomotyvas(20,30)
-
-    # Vag1 = Vagonas(5,10,3,1)
-    # Vag2 = Vagonas(9,20,7,2)
-    # Vag3 = Vagonas(9,20,10,3)
-    # Vag4 = Vagonas(8,20,9,4)
-
-    # Trauk1 = Traukinys(Lok1,Vag1)
-    # Trauk2 = Traukinys(Lok2,Vag2)
-    # Trauk3 = Traukinys(Lok3,Vag3)
-    # Trauk4 = Traukinys(Lok4,Vag4)
-
-    
-
-    # Laisva = sorted(Laisva,reverse=False)
-    # print(Laisva)
-########################################################    
+    # print("Laisva: ", Laisva)
+    # print("---------------------------------")
+    sortSelect = input("Pasirinkite rusiavimo tipa,\n1.Laisva vieta traukinyje, 2.Mase: ")
+    if(sortSelect=="1"):
+        Laisva = []
+        Laisva.append(((trauk[0]+trauk[1]) - (trauk[0]-trauk[1]),0))
+        Laisva.append(((trauk[1]+trauk[2]) - (trauk[1]-trauk[2]),1))
+        Laisva.append(((trauk[2]+trauk[0]) - (trauk[2]-trauk[0]),2))
+        Laisva = sorted(Laisva,reverse=False)
+        for i in range(len(Laisva)):
+            for j in range(len(trauk)):
+                if (Laisva[i][1]==trauk[j].nr):
+                    print("---------------------------------")
+                    print(trauk[j])
+    elif(sortSelect=="2"):
+        Mase = []
+        Mase.append((trauk[0]+trauk[1],0))
+        Mase.append((trauk[1]+trauk[2],1))
+        Mase.append((trauk[2]+trauk[0],2))
+        Mase = sorted(Mase,reverse=False)
+        for i in range(len(Mase)):
+            for j in range(len(trauk)):
+                if(Mase[i][1]==trauk[j].nr):
+                    
+                    print("---------------------------------")
+                    print("Visa traukinio mase: ",Mase[i][0])
+                    print("Traukinys: ",trauk[j])
+    else:
+        print("Xujovas skaicius")
+   
 sorting()
     # Sastatas = Vag+Vag2
 
