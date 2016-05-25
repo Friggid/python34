@@ -77,7 +77,7 @@ def writeJson():
     with open("data.json") as data_file:
         data=json.load(data_file)
 
-    tipas = input("1. Lokomotyvas, 2. Vagonas, 3. B - Gryzti y meniu , Parasykite pasirinkima: ")
+    tipas = input("1. Lokomotyvas, 2. Vagonas, 3. Q - Gryzti y meniu , Parasykite pasirinkima: ")
     print("----------------------------------------------------")    
 
     if(tipas=="1"):
@@ -117,12 +117,12 @@ def writeJson():
         print("----------------------------------------------------")
         print("Vagonas sukurtas sekmingai!")
         print(data)
-    elif(tipas == "b")or(tipas == "B"):
+    elif(tipas == "q")or(tipas == "Q"):
         menu()
     else:
         print("!! Neteisingas pasirinkimas, privalo buti skaicius  !!")
         print("!! Galite pasirinkti 1(Lokomatyvas) arba 2(Vagonas) !!") 
-        print("!! Spauskite B, tam kad grysti y meniu              !!")       
+        print("!! Spauskite Q, tam kad grysti y meniu              !!")       
         print("------------------------------------------------------")        
         writeJson()
 
