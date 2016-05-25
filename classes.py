@@ -18,7 +18,7 @@ class Lokomotyvas:
             self._mase = 1
             print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
             print("Mase turi buti skaicius ir daugiau uz 0!")
-            print("Nustatyta default reiksme 1!")                        
+            print("Nustatyta pradine reiksme 1!")                        
             print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")            
     @maxMase.setter
     def maxMase(self,v):
@@ -27,8 +27,8 @@ class Lokomotyvas:
         else:
             self._maxMase = 2
             print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-            print("Mase turi buti skaicius ir daugiau uz 0!")
-            print("Nustatyta default reiksme 2!")            
+            print("Max mase turi buti skaicius ir daugiau uz 0!")
+            print("Nustatyta pradine reiksme 2!")            
             print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n") 
     
     def __add__(self,other):
@@ -65,16 +65,44 @@ class Vagonas:
     
     @mase.setter
     def mase(self,v):
-        self._mase = v
+        if (v > 0)and(type(v)==int): 
+            self._mase = v
+        else:
+            self._mase = 1
+            print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            print("Mase turi buti skaicius ir daugiau uz 0!")
+            print("Nustatyta pradine reiksme 1!")            
+            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n") 
     @maxMase.setter
     def maxMase(self,v):
-        self._maxMase = v
+        if (v > 0)and(type(v)==int): 
+            self._maxMase = v
+        else:
+            self._maxMase = 2
+            print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            print("Max mase turi buti skaicius ir daugiau uz 0!")
+            print("Nustatyta pradine reiksme 2!")            
+            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
     @krovinioMase.setter
     def krovinioMase(self,v):
-        self._krovinioMase = v
+        if (v > 0)and(type(v)==int): 
+            self._krovinioMase = v
+        else:
+            self._krovinioMase = 1
+            print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            print("Krovinio mase turi buti skaicius ir daugiau uz 0!")
+            print("Nustatyta pradine reiksme 1!")            
+            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
     @nr.setter
     def nr(self,v):
-        self._nr = v
+        if (v > 0)and(type(v)==int): 
+            self._nr = v
+        else:
+            self._nr = 1
+            print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            print("Nr turi buti skaicius ir daugiau uz 0!")
+            print("Nustatyta pradine reiksme 1!")            
+            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
         
     def __add__(self,other):
         return(self._mase+other._mase,self._maxMase+other._maxMase)
