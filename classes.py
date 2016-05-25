@@ -1,26 +1,73 @@
 class Lokomotyvas:
     def __init__(self,mase,maxMase):
-        self.mase = mase
-        self.maxMase = maxMase
+        self._mase = mase
+        self._maxMase = maxMase
+
+    @property
+    def mase(self):
+        return self._mase
+    @property
+    def maxMase(self):
+        return self._maxMase
+
+    @mase.setter
+    def mase(self,value):
+        self._mase = value
+    @maxMase.setter
+    def maxMase(self,value):
+        self._maxMase = value
+    
     def __add__(self,other):
-        return(self.mase+other.mase,self.maxMase+other.maxMase)
+        return(self._mase+other._mase,self._maxMase+other._maxMase)
+        
     def __sub__(self,other):
-        return(self.mase-other.mase,self.maxMase-other.maxMase)
+        return(self._mase-other._mase,self._maxMase-other._maxMase)
+        
     def __repr__(self):
-        return "(Mase: %d, Max mase: %d)"%(self.mase,self.maxMase)
+        return "(Mase: %d, Max mase: %d)"%(self._mase,self._maxMase)
+        
     def __str__(self):
-        return "Mase: %i, Max mase: %i" %(self.mase,self.maxMase)
+        return "Mase: %i, Max mase: %i" %(self._mase,self._maxMase)
 
 class Vagonas:
     def __init__(self,mase,maxMase,krovinioMase,nr):
-        self.mase = mase
-        self.maxMase = maxMase
-        self.krovinioMase = krovinioMase
-        self.nr = nr
+        self._mase = mase
+        self._maxMase = maxMase
+        self._krovinioMase = krovinioMase
+        self._nr = nr
+    
+    @property
+    def mase(self):
+        return self._mase
+    @property
+    def maxMase(self):
+        return self._maxMase
+    @property
+    def krovinioMase(self):
+        return self._krovinioMase
+    @property
+    def nr(self):
+        return self._nr
+    
+    @mase.setter
+    def mase(self,value):
+        self._mase = value
+    @maxMase.setter
+    def maxMase(self,value):
+        self._maxMase = value
+    @krovinioMase.setter
+    def krovinioMase(self,value):
+        self._krovinioMase = value
+    @nr.setter
+    def nr(self,value):
+        self._nr = value
+        
     def __add__(self,other):
         return(self.mase+other.mase,self.maxMase+other.maxMase)
+
     def __repr__(self):
         return "(Mase: %d, Max mase: %d, Krovinio mase: %d, Nr: %d)" %(self.mase,self.maxMase,self.krovinioMase,self.nr)    
+
     def __str__(self):
         return "Mase: %i, Max mase: %i, Krovinio mase: %i, Nr: %i" %(self.mase,self.maxMase,self.krovinioMase,self.nr)
 
