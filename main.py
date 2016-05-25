@@ -63,6 +63,14 @@ def sorting():
         print("Yveskite skaiciu 1 arba 2.")
         sorting()
 
+def tikrintiInputui(sk):
+    try:
+        sk=int(sk)
+    except ValueError as error:
+        print('Negalima yvesti simbolio!\n')
+        print('Error code: '  + repr(error))
+        writeJson()
+
 def writeJson():
 #failas = input()
              ## '/mif/stud3/2014/tami1864/Python/3atsisk/'+ cia failas turi but
@@ -76,7 +84,9 @@ def writeJson():
         tipas="lokomotyvas"
 
         mase = input("Yveskite mase: ")
+        tikrintiInputui(mase)
         maxMase = input("Yveskite max mase: ")
+        tikrintiInputui(maxMase)
 
         isvedimDuom = {'mase':int(mase),'maxMase':int(maxMase)}
         data[tipas].append(isvedimDuom)
@@ -91,9 +101,13 @@ def writeJson():
         tipas="vagonas"
 
         mase=input("Yveskite mase: ")
+        tikrintiInputui(mase)
         maxMase=input("Yveskite max mase: ")
+        tikrintiInputui(maxMase)
         krovinioMase=input("Yveskite krovinio mase: ")
+        tikrintiInputui(krovinioMase)
         nr=input("Yveskite krovinio numeri: ")
+        tikrintiInputui(nr)
 
         isvedimDuom = {'mase':int(mase),'maxMase':int(maxMase),'krovinioMase':int(krovinioMase),'nr':int(nr)}
         data[tipas].append(isvedimDuom)
@@ -109,7 +123,7 @@ def writeJson():
         print("!! Neteisingas pasirinkimas, privalo buti skaicius  !!")
         print("!! Galite pasirinkti 1(Lokomatyvas) arba 2(Vagonas) !!") 
         print("!! Spauskite B, tam kad grysti y meniu              !!")       
-        print("----------------------------------------------------")        
+        print("------------------------------------------------------")        
         writeJson()
 
 print("----------------------------------------------------")
