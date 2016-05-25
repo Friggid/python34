@@ -20,16 +20,21 @@ def readJson():
     trauk.append(Traukinys(lok[0],vag[0],0))
     trauk.append(Traukinys(lok[1],vag[1],1))
     trauk.append(Traukinys(lok[2],vag[2],2))
-    print("Traukas: ", trauk)
     return trauk
+
+def showTrains():
+    trauk = []
+    trauk = readJson()
+    for j in range(len(trauk)):
+        print("Traukinys: ", j+1)
+        print(trauk[j])
+        print("----------------------------------------------------")
     
 def sorting():      
     trauk = []
     trauk = readJson()
     
-    # print("Laisva: ", Laisva)
-    # print("---------------------------------")
-    sortSelect = input("Pasirinkite rusiavimo tipa,\n1.Laisva vieta traukinyje, 2.Mase: ")
+    sortSelect = input("\nPasirinkite rusiavimo tipa:\n1.Laisva vieta traukinyje, 2.Mase: ")
     if(sortSelect=="1"):
         Laisva = []
         Laisva.append(((trauk[0]+trauk[1]) - (trauk[0]-trauk[1]),0))
@@ -39,8 +44,9 @@ def sorting():
         for i in range(len(Laisva)):
             for j in range(len(trauk)):
                 if (Laisva[i][1]==trauk[j].nr):
-                    print("---------------------------------")
-                    print(trauk[j])
+                    print("----------------------------------------------------")
+                    print("Laisva vieta traukinyje: ",Laisva[i][0])
+                    print("Traukinys: ",trauk[j])
     elif(sortSelect=="2"):
         Mase = []
         Mase.append((trauk[0]+trauk[1],0))
@@ -50,14 +56,12 @@ def sorting():
         for i in range(len(Mase)):
             for j in range(len(trauk)):
                 if(Mase[i][1]==trauk[j].nr):
-                    
-                    print("---------------------------------")
+                    print("----------------------------------------------------")
                     print("Visa traukinio mase: ",Mase[i][0])
                     print("Traukinys: ",trauk[j])
     else:
-        print("Xujovas skaicius")
+        print("Yveskite skaiciu 1 arba 2.")
    
-sorting()
     # Sastatas = Vag+Vag2
 
     # Traukinys1 = Traukinys(Lokomotyvas2,Vag)
@@ -117,3 +121,40 @@ def writeJson():
     else:
         print("Neteisingas pasirinkimas")
         sys.exit(0)
+
+print("----------------------------------------------------")
+print("|               PROGRAMOS NAUDOJIMAS               |")
+print("|                                                  |")
+print("| 1. Yveskite failo pavadinima                     |")
+print("| 2. Pasirinkite norima veiksma                    |")
+print("| 3. Skaityti/rasyti JSON, rusiuoti                |")
+print("| 4. Rusiuokite faila pagal 2 kriterijus           |")
+print("----------------------------------------------------")
+print("\n")
+print("----------------------------------------------------")
+print("|                      MENIU                       |")
+print("|                                                  |")
+print("|    Yveskite failo pavadinima                     |")
+print("| 1. Paziurekite esamus traukinius                 |")
+print("| 2. Rusiuokite esamus traukinius                  |")
+print("| 3. Pridekite nauja vagona ar lokomotyva          |")
+print("| Q. Iseiti is programos                           |")
+print("----------------------------------------------------")
+
+print("----------------------------------------------------")
+def menu():
+    menuPick = input("Pasirinkimas(1,2,3,Q): ")    
+    if(menuPick == "1"):
+        showTrains()
+        menu()
+    elif(menuPick == "2"):
+        sorting()
+        menu()
+    elif(menuPick == "3"):
+        writeJson()
+        menu()
+    else:
+        print("Programa sustabdyta.")
+        sys.exit(0)
+        
+menu()
