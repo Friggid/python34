@@ -4,8 +4,7 @@ import classes
 from classes import * 
 
 def readJson():
-    #failas = input()
-    with open("data.json") as data_file:
+    with open(failas) as data_file:
         data=json.load(data_file)
     
     lok = []
@@ -25,6 +24,9 @@ def readJson():
 def showTrains():
     trauk = []
     trauk = readJson()
+    print("----------------------------------------------------")
+    print("|           Spauzdinamai visi traukiniai           |")    
+    print("----------------------------------------------------")
     for j in range(len(trauk)):
         print("Traukinys: ", j+1)
         print(trauk[j])
@@ -36,6 +38,9 @@ def sorting():
     
     sortSelect = input("\nPasirinkite rusiavimo tipa:\n1.Laisva vieta traukinyje, 2.Mase: ")
     if(sortSelect=="1"):
+        print("----------------------------------------------------")
+        print("|       Spauzdinama laisva vieta traukinyje        |")    
+        print("----------------------------------------------------")
         Laisva = []
         Laisva.append(((trauk[0]+trauk[1]) - (trauk[0]-trauk[1]),0))
         Laisva.append(((trauk[1]+trauk[2]) - (trauk[1]-trauk[2]),1))
@@ -43,11 +48,14 @@ def sorting():
         Laisva = sorted(Laisva,reverse=False)
         for i in range(len(Laisva)):
             for j in range(len(trauk)):
-                if (Laisva[i][1]==trauk[j].nr):
-                    print("----------------------------------------------------")
+                if (Laisva[i][1]==trauk[j].nr):                
                     print("Laisva vieta traukinyje: ",Laisva[i][0])
                     print("Traukinys: ",trauk[j])
+                    print("----------------------------------------------------")                    
     elif(sortSelect=="2"):
+        print("----------------------------------------------------")
+        print("|         Spauzdinama visa traukinio mase          |")    
+        print("----------------------------------------------------")
         Mase = []
         Mase.append((trauk[0]+trauk[1],0))
         Mase.append((trauk[1]+trauk[2],1))
@@ -56,9 +64,9 @@ def sorting():
         for i in range(len(Mase)):
             for j in range(len(trauk)):
                 if(Mase[i][1]==trauk[j].nr):
-                    print("----------------------------------------------------")
                     print("Visa traukinio mase: ",Mase[i][0])
                     print("Traukinys: ",trauk[j])
+                    print("----------------------------------------------------")                    
     else:
         print("Yveskite skaiciu 1 arba 2.")
         sorting()
@@ -68,13 +76,13 @@ def tikrintiInputui(sk):
         sk=int(sk)
     except ValueError as error:
         print('Negalima yvesti simbolio!\n')
-        print('Error code: '  + repr(error))
+        print('Error code: ' + repr(error) + '\n')
         writeJson()
 
 def writeJson():
 #failas = input()
              ## '/mif/stud3/2014/tami1864/Python/3atsisk/'+ cia failas turi but
-    with open("data.json") as data_file:
+    with open(failas) as data_file:
         data=json.load(data_file)
 
     tipas = input("1. Lokomotyvas, 2. Vagonas, 3. Q - Gryzti y meniu , Parasykite pasirinkima: ")
@@ -91,7 +99,7 @@ def writeJson():
         isvedimDuom = {'mase':int(mase),'maxMase':int(maxMase)}
         data[tipas].append(isvedimDuom)
 #/mif/stud3/2014/tami1864/Python/3atsisk/
-        with open('data.json', 'w') as outfile:
+        with open(failas, 'w') as outfile:
             json.dump(data,outfile)
         print("----------------------------------------------------")
         print("Lokomatyvas sukurtas sekmingai!")
@@ -112,7 +120,7 @@ def writeJson():
         isvedimDuom = {'mase':int(mase),'maxMase':int(maxMase),'krovinioMase':int(krovinioMase),'nr':int(nr)}
         data[tipas].append(isvedimDuom)
 #/mif/stud3/2014/tami1864/Python/3atsisk/
-        with open('data.json', 'w') as outfile:
+        with open(failas, 'w') as outfile:
             json.dump(data,outfile)
         print("----------------------------------------------------")
         print("Vagonas sukurtas sekmingai!")
@@ -145,8 +153,8 @@ print("| 3. Pridekite nauja vagona ar lokomotyva          |")
 print("| Q. Iseiti is programos                           |")
 print("----------------------------------------------------")
 
-print("----------------------------------------------------")
 def menu():
+    
     menuPick = input("Pasirinkimas(1,2,3,Q): ")    
     if(menuPick == "1"):
         showTrains()
@@ -160,5 +168,15 @@ def menu():
     else:
         print("Programa sustabdyta.")
         sys.exit(0)
-                
+def tikrintiFailui(f):
+    try:
+        f = open(f)
+    except FileNotFoundError as e:
+        print("----------------------------------------------------")
+        print("Failas "+ f +" nerastas!\n")
+        print("Error code: " + repr(e))
+        sys.exit(0)
+ 
+failas = input("Yveskite failo pavadinima: ")
+tikrintiFailui(failas)
 menu()
