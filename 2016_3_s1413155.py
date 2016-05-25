@@ -7,6 +7,9 @@ class Lokomotyvas:
         self.maxMase = maxMase
     def __add__(self,other):
         return(self.mase+other.mase,self.maxMase+other.maxMase)
+    
+    def __sub__(self,other):
+        return(self.mase-other.mase,self.maxMase-other.maxMase)
 
     def __repr__(self):
         return "(Mase: %d,%d)"%(self.mase,self.maxMase)
