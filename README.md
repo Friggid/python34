@@ -8,3 +8,4 @@ Atsiskaitymas #3
 4. Paspaudus 2 - galima surusiuoti traukinius pagal visu vagonu ir lokomatyvu bendra mase arba surusiuoti traukinius pagal laisva vieta likusia atemus kroviniu mase is maksimalios mases visu lokomatyvu ir vagonu. Viskas isrusiuojama didejimo tvarka.
 5. Paspaudus 3 - galima prideti nauju lokomatyvu ir/ar vagonu.
 6. Paspaudus Q - iseiname is programos.
+7. Doc testing - python3 -m doctest -v trauktTest.txt
