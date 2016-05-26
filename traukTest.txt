@@ -1,0 +1,24 @@
+>>> from classes import *
+>>> lok = []
+>>> vag = []
+>>> trauk = []
+>>> trauk.append(Traukinys(Lokomotyvas(1,2),Vagonas(1,2,3,4),0))
+>>> trauk.append(Traukinys(Lokomotyvas(2,3),Vagonas(5,6,7,8),1))
+>>> print(trauk[0])
+Lokomotyvo mase: Mase: 1, Max mase: 2,Vagono mase: Mase: 1, Max mase: 2, Krovinio mase: 3, Nr: 4, Traukinio nr.: 0
+>>> trauk[0]
+(Lok: Mase: 1, Max mase: 2 Vag: Mase: 1, Max mase: 2, Krovinio mase: 3, Nr: 4 Traukinio Nr.: 0)
+>>> Laisva = []
+>>> Laisva.append(((trauk[0]+trauk[1]) - (trauk[0]-trauk[1]),0))
+>>> Laisva[0]
+(6, 0)
+>>> Mase = []
+>>> Mase.append(trauk[0]+trauk[1])
+>>> Mase[0]
+9
+>>> ilgis = len(trauk)
+>>> ilgis
+2
+>>> bulas = bool(Mase)
+>>> bulas
+True
